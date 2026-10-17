@@ -597,14 +597,23 @@ namespace LINQ
 
 
 
-			#region 10.
-			Console.WriteLine("\n 10 ");
-			var orders = from c in CustomerList
-						 from o in c.Orders
-						 where o.OrderDate.Year >= 1997
-						 select new { c.CustomerID, o.OrderDate };
-			foreach (var item in orders)
-				Console.WriteLine($"{item.CustomerID} - {item.OrderDate:yyyy-MM-dd}");
+			//#region 10.
+			//Console.WriteLine("\n 10 ");
+			//var orders = from c in CustomerList
+			//			 from o in c.Orders
+			//			 where o.OrderDate.Year >= 1997
+			//			 select new { c.CustomerID, o.OrderDate };
+			//foreach (var item in orders)
+			//	Console.WriteLine($"{item.CustomerID} - {item.OrderDate:yyyy-MM-dd}");
+			//#endregion
+
+
+
+			#region 11.
+			Console.WriteLine("\n 11 ");
+			var withPosition = ProductList.Select((p, i) => new { Number = i + 1, p.ProductName });
+			foreach (var item in withPosition)
+				Console.WriteLine($"{item.Number} - {item.ProductName}");
 			#endregion
 
 
