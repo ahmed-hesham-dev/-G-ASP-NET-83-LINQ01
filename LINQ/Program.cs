@@ -569,12 +569,26 @@ namespace LINQ
 
 
 
-			#region Q5. 
-			Console.WriteLine("\n Q5 ");
-			var condiments = ProductList.Where(p => p.UnitsInStock > 0 && p.Category == "Condiments");
-			foreach (var p in condiments)
-				Console.WriteLine($"{p.ProductName} - Stock: {p.UnitsInStock}");
+			//#region Q5. 
+			//Console.WriteLine("\n Q5 ");
+			//var condiments = ProductList.Where(p => p.UnitsInStock > 0 && p.Category == "Condiments");
+			//foreach (var p in condiments)
+			//	Console.WriteLine($"{p.ProductName} - Stock: {p.UnitsInStock}");
+			//#endregion
+
+			#region 6. 
+			Console.WriteLine("\n Q6 ");
+			var anon = ProductList.Select(p => new
+			{
+				Name = p.ProductName,
+				Price = p.UnitPrice,
+				StockStatus = p.UnitsInStock > 0 ? "Available" : "Out of Stock"
+			});
+			foreach (var item in anon)
+				Console.WriteLine($"{item.Name} | {item.Price:C2} | {item.StockStatus}");
 			#endregion
+
+
 
 			#endregion
 
