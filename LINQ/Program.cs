@@ -1,4 +1,6 @@
-﻿//using static LINQ.DataSources.Source;
+﻿using static LINQ.DataSources.Source;
+using LINQ.DataSources;
+using LINQ.Models;
 namespace LINQ
 {
 	internal class Program
@@ -534,6 +536,23 @@ namespace LINQ
 			//foreach (var item in result)
 			//	Console.WriteLine(item);
 			#endregion
+
+
+
+
+			#region Assignment
+
+			List<Product> ProductList = Source.ProductList;
+			List<Customer> CustomerList = Source.CustomerList;
+
+			#region 1. Seafood products: name and price
+			Console.WriteLine(" Q 1");
+			var seafood = ProductList.Where(p => p.Category == "Seafood");
+			foreach (var p in seafood)
+				Console.WriteLine($"{p.ProductName} - {p.UnitPrice:C2}");
+			#endregion
+			#endregion
+			Console.ReadLine();
 		}
 	}
 }
