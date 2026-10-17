@@ -552,6 +552,13 @@ namespace LINQ
 				Console.WriteLine($"{p.ProductName} - {p.UnitPrice:C2}");
 			#endregion
 			#endregion
+
+			#region Q2. Only product names
+			Console.WriteLine("\n Q2 ");
+			var names = ProductList.Select(p => p.ProductName);
+			foreach (var n in names)
+				Console.WriteLine(n);
+			#endregion
 			Console.ReadLine();
 		}
 	}
