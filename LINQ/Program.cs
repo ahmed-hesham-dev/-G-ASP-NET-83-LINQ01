@@ -560,15 +560,25 @@ namespace LINQ
 			//#endregion
 
 
-			#region Q4. 
-			Console.WriteLine("\n=== 4 ===");
-			var between = ProductList.Where(p => p.UnitPrice >= 10 && p.UnitPrice <= 30);
-			foreach (var p in between)
-				Console.WriteLine($"{p.ProductName} - {p.UnitPrice:C2}");
-			#endregion
+			//#region Q4. 
+			//Console.WriteLine("\n=== 4 ===");
+			//var between = ProductList.Where(p => p.UnitPrice >= 10 && p.UnitPrice <= 30);
+			//foreach (var p in between)
+			//	Console.WriteLine($"{p.ProductName} - {p.UnitPrice:C2}");
+			//#endregion
+
+
+
+			#region Q5. 
+			Console.WriteLine("\n Q5 ");
+			var condiments = ProductList.Where(p => p.UnitsInStock > 0 && p.Category == "Condiments");
+			foreach (var p in condiments)
+				Console.WriteLine($"{p.ProductName} - Stock: {p.UnitsInStock}");
 			#endregion
 
-			
+			#endregion
+
+
 
 
 			Console.ReadLine();
