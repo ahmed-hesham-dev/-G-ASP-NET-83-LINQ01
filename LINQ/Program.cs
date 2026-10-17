@@ -588,13 +588,24 @@ namespace LINQ
 			//	Console.WriteLine($"{item.Name} | {item.Price:C2} | {item.StockStatus}");
 			//#endregion
 
-			#region 7.
-			Console.WriteLine("\n 7 ");
-			var indexed = ProductList.Select((p, i) => new { Position = i + 1, p.ProductName });
-			foreach (var item in indexed)
-				Console.WriteLine($"{item.Position}. {item.ProductName}");
-			#endregion
+			//#region 7.
+			//Console.WriteLine("\n 7 ");
+			//var indexed = ProductList.Select((p, i) => new { Position = i + 1, p.ProductName });
+			//foreach (var item in indexed)
+			//	Console.WriteLine($"{item.Position}. {item.ProductName}");
+			//#endregion
 
+
+
+			#region 10.
+			Console.WriteLine("\n 10 ");
+			var orders = from c in CustomerList
+						 from o in c.Orders
+						 where o.OrderDate.Year >= 1997
+						 select new { c.CustomerID, o.OrderDate };
+			foreach (var item in orders)
+				Console.WriteLine($"{item.CustomerID} - {item.OrderDate:yyyy-MM-dd}");
+			#endregion
 
 
 			#endregion
