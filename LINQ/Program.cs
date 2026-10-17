@@ -1,4 +1,6 @@
-﻿//using static LINQ.DataSources.Source;
+﻿using static LINQ.DataSources.Source;
+using LINQ.DataSources;
+using LINQ.Models;
 namespace LINQ
 {
 	internal class Program
@@ -534,6 +536,93 @@ namespace LINQ
 			//foreach (var item in result)
 			//	Console.WriteLine(item);
 			#endregion
+
+
+
+
+			#region Assignment
+
+			List<Product> ProductList = Source.ProductList;
+			List<Customer> CustomerList = Source.CustomerList;
+
+			//#region 1. Seafood products: name and price
+			//Console.WriteLine(" Q 1");
+			//var seafood = ProductList.Where(p => p.Category == "Seafood");
+			//foreach (var p in seafood)
+			//	Console.WriteLine($"{p.ProductName} - {p.UnitPrice:C2}");
+			//#endregion
+
+			//#region Q2. Only product names
+			//Console.WriteLine("\n Q2 ");
+			//var names = ProductList.Select(p => p.ProductName);
+			//foreach (var n in names)
+			//	Console.WriteLine(n);
+			//#endregion
+
+
+			//#region Q4. 
+			//Console.WriteLine("\n=== 4 ===");
+			//var between = ProductList.Where(p => p.UnitPrice >= 10 && p.UnitPrice <= 30);
+			//foreach (var p in between)
+			//	Console.WriteLine($"{p.ProductName} - {p.UnitPrice:C2}");
+			//#endregion
+
+
+
+			//#region Q5. 
+			//Console.WriteLine("\n Q5 ");
+			//var condiments = ProductList.Where(p => p.UnitsInStock > 0 && p.Category == "Condiments");
+			//foreach (var p in condiments)
+			//	Console.WriteLine($"{p.ProductName} - Stock: {p.UnitsInStock}");
+			//#endregion
+
+			//#region 6. 
+			//Console.WriteLine("\n Q6 ");
+			//var anon = ProductList.Select(p => new
+			//{
+			//	Name = p.ProductName,
+			//	Price = p.UnitPrice,
+			//	StockStatus = p.UnitsInStock > 0 ? "Available" : "Out of Stock"
+			//});
+			//foreach (var item in anon)
+			//	Console.WriteLine($"{item.Name} | {item.Price:C2} | {item.StockStatus}");
+			//#endregion
+
+			//#region 7.
+			//Console.WriteLine("\n 7 ");
+			//var indexed = ProductList.Select((p, i) => new { Position = i + 1, p.ProductName });
+			//foreach (var item in indexed)
+			//	Console.WriteLine($"{item.Position}. {item.ProductName}");
+			//#endregion
+
+
+
+			//#region 10.
+			//Console.WriteLine("\n 10 ");
+			//var orders = from c in CustomerList
+			//			 from o in c.Orders
+			//			 where o.OrderDate.Year >= 1997
+			//			 select new { c.CustomerID, o.OrderDate };
+			//foreach (var item in orders)
+			//	Console.WriteLine($"{item.CustomerID} - {item.OrderDate:yyyy-MM-dd}");
+			//#endregion
+
+
+
+			#region 11.
+			Console.WriteLine("\n 11 ");
+			var withPosition = ProductList.Select((p, i) => new { Number = i + 1, p.ProductName });
+			foreach (var item in withPosition)
+				Console.WriteLine($"{item.Number} - {item.ProductName}");
+			#endregion
+
+
+			#endregion
+
+
+
+
+			Console.ReadLine();
 		}
 	}
 }
