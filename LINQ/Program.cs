@@ -545,20 +545,32 @@ namespace LINQ
 			List<Product> ProductList = Source.ProductList;
 			List<Customer> CustomerList = Source.CustomerList;
 
-			#region 1. Seafood products: name and price
-			Console.WriteLine(" Q 1");
-			var seafood = ProductList.Where(p => p.Category == "Seafood");
-			foreach (var p in seafood)
+			//#region 1. Seafood products: name and price
+			//Console.WriteLine(" Q 1");
+			//var seafood = ProductList.Where(p => p.Category == "Seafood");
+			//foreach (var p in seafood)
+			//	Console.WriteLine($"{p.ProductName} - {p.UnitPrice:C2}");
+			//#endregion
+
+			//#region Q2. Only product names
+			//Console.WriteLine("\n Q2 ");
+			//var names = ProductList.Select(p => p.ProductName);
+			//foreach (var n in names)
+			//	Console.WriteLine(n);
+			//#endregion
+
+
+			#region Q4. 
+			Console.WriteLine("\n=== 4 ===");
+			var between = ProductList.Where(p => p.UnitPrice >= 10 && p.UnitPrice <= 30);
+			foreach (var p in between)
 				Console.WriteLine($"{p.ProductName} - {p.UnitPrice:C2}");
 			#endregion
 			#endregion
 
-			#region Q2. Only product names
-			Console.WriteLine("\n Q2 ");
-			var names = ProductList.Select(p => p.ProductName);
-			foreach (var n in names)
-				Console.WriteLine(n);
-			#endregion
+			
+
+
 			Console.ReadLine();
 		}
 	}
